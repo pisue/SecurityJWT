@@ -1,8 +1,8 @@
-package com.pisue.repository;
+package com.pisue.securityjwt.repository;
 
-import com.pisue.entity.UserEntity;
+import com.pisue.securityjwt.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
-
+    Boolean existsByUsername(String username);
 }

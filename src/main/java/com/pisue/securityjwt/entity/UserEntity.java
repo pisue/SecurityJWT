@@ -1,4 +1,4 @@
-package com.pisue.entity;
+package com.pisue.securityjwt.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
