@@ -1,5 +1,6 @@
 package com.pisue.securityjwt.config;
 
+import com.pisue.securityjwt.jwt.JWTFilter;
 import com.pisue.securityjwt.jwt.JWTUtil;
 import com.pisue.securityjwt.jwt.LoginFilter;
 import org.springframework.context.annotation.Bean;
@@ -57,6 +58,8 @@ public class SecurityConfig {
                         .requestMatchers("/login", "/", "/join").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated());
+
+        http.addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
 
         http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
